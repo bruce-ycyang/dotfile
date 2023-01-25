@@ -61,4 +61,14 @@ return require('packer').startup(function()
       'kyazdani42/nvim-tree.lua',
       requires = 'kyazdani42/nvim-web-devicons'
   }
+  -- Highlight, edit, and navigate code  
+  use { 
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  }
+
+  -- auto tag 自動補齊 html tag 
+  use 'windwp/nvim-ts-autotag'
 end)
