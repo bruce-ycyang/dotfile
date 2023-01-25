@@ -41,34 +41,67 @@ packer.init({
 
 -- Install your plugins here
 return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  -- Statusline
-  use {'nvim-lualine/lualine.nvim'}
+    -- Statusline
+    use { 'nvim-lualine/lualine.nvim' }
 
-  -- buffer line
-  use {'akinsho/bufferline.nvim', tag = "v3.*"}
-  
-  -- Colorschemes
-  use 'folke/tokyonight.nvim'
+    -- buffer line
+    use { 'akinsho/bufferline.nvim', tag = "v3.*" }
 
-  -- File icons
-  use 'kyazdani42/nvim-web-devicons' 
+    -- Colorschemes
+    use 'folke/tokyonight.nvim'
+    use {
+        'svrana/neosolarized.nvim',
+        requires = { 'tjdevries/colorbuddy.nvim' }
+    }
 
-  -- nvim-tree (側邊資料夾目錄)
-  use {
-      'kyazdani42/nvim-tree.lua',
-      requires = 'kyazdani42/nvim-web-devicons'
-  }
-  -- Highlight, edit, and navigate code  
-  use { 
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-  }
+    -- File icons
+    use 'kyazdani42/nvim-web-devicons'
 
-  -- auto tag 自動補齊 html tag 
-  use 'windwp/nvim-ts-autotag'
+    -- nvim-tree (側邊資料夾目錄)
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons'
+    }
+    -- Highlight, edit, and navigate code
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
+    }
+
+    -- auto tag 自動補齊 html tag
+    use 'windwp/nvim-ts-autotag'
+
+    -- auto pair 自動括號
+    use 'windwp/nvim-autopairs'
+
+    ------------------------------------------------------------
+    -- LSP Configuration & Plugins
+    use {
+        'neovim/nvim-lspconfig',
+        requires = {
+            -- Automatically install LSPs to stdpath for neovim
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+
+            -- Useful status updates for LSP
+            'j-hui/fidget.nvim',
+
+            -- Additional lua configuration, makes nvim stuff amazing
+            'folke/neodev.nvim',
+        },
+    }
+
+    -- Autocompletion
+    use 'hrsh7th/nvim-cmp' -- Completion
+    use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
+    use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'onsails/lspkind-nvim'
+    ------------------------------------------------------------
 end)

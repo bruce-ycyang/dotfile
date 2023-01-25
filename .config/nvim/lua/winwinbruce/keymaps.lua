@@ -7,6 +7,13 @@ vim.g.maplocalleader = " "
 local map = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true }
 
+-- x do not yank
+map('n', 'x', '"_x', opt)
+
+-- Increment/decrement
+map('n', '+', '<C-a>', opt)
+map('n', '-', '<C-x>', opt)
+
 -- 往下移動 9 行
 map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
@@ -50,3 +57,4 @@ map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opt)
 
 -- nvimTree
 map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
+
