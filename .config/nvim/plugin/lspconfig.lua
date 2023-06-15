@@ -33,11 +33,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    -- diagnostic
-    buf_set_keymap('n', 'go', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    buf_set_keymap('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+    -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
 protocol.CompletionItemKind = {
@@ -81,12 +77,12 @@ nvim_lsp.pyright.setup {
 
 nvim_lsp.tsserver.setup {
     on_attach = on_attach,
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities
 }
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)

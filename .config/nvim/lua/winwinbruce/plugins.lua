@@ -95,6 +95,16 @@ return require('packer').startup(function()
             'folke/neodev.nvim',
         },
     }
+    -- LSP UIs
+    -- use 'glepnir/lspsaga.nvim'
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            require("lspsaga").setup({})
+        end,
+        requires = { { "nvim-tree/nvim-web-devicons" } }
+    })
 
     -- Autocompletion
     use 'hrsh7th/nvim-cmp' -- Completion
@@ -104,4 +114,15 @@ return require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     use 'onsails/lspkind-nvim'
     ------------------------------------------------------------
+
+    -- telescope
+    use 'nvim-lua/plenary.nvim' -- Common utilities
+    use 'nvim-telescope/telescope.nvim'
+    use 'nvim-telescope/telescope-file-browser.nvim'
+
+    -- markdown
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 end)

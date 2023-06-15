@@ -24,7 +24,7 @@ ts.setup {
         'python',
         'rust',
         'typescript',
-        'vim'
+        'vim',
     },
     -- ctrl + space select content of { }
     incremental_selection = {
