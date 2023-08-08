@@ -105,6 +105,11 @@ return require('packer').startup(function()
         end,
         requires = { { "nvim-tree/nvim-web-devicons" } }
     })
+    -- rust tool
+    use 'simrat39/rust-tools.nvim'
+
+    -- rust Debugging
+    use 'mfussenegger/nvim-dap'
 
     -- Autocompletion
     use 'hrsh7th/nvim-cmp' -- Completion
@@ -113,12 +118,21 @@ return require('packer').startup(function()
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
     use 'onsails/lspkind-nvim'
+
+    -- Useful completion sources:
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/vim-vsnip'
     ------------------------------------------------------------
 
     -- telescope
     use 'nvim-lua/plenary.nvim' -- Common utilities
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
+
+    -- Rust and Rust Tests
 
     -- markdown
     use({

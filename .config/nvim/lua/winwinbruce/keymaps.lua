@@ -5,7 +5,7 @@ vim.g.maplocalleader = " "
 -- loca 變數
 -- map('模式','按键','對應按鍵XX',opt)
 local map = vim.api.nvim_set_keymap
-local opt = {noremap = true, silent = true }
+local opt = { noremap = true, silent = true }
 
 -- x do not yank
 map('n', 'x', '"_x', opt)
@@ -40,8 +40,8 @@ map("n", "so", "<C-w>o", opt) -- close others
 map("n", "s.", ":vertical resize +20<CR>", opt)
 map("n", "s,", ":vertical resize -20<CR>", opt)
 map("n", "s=", "<C-w>=", opt)
-map("n", "sj", ":resize +10<CR>",opt)
-map("n", "sk", ":resize -10<CR>",opt)
+map("n", "sj", ":resize +10<CR>", opt)
+map("n", "sk", ":resize -10<CR>", opt)
 
 -- 分頁跳轉 alt + kjhl
 map("n", "<A-h>", "<C-w>h", opt)
@@ -58,3 +58,15 @@ map('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opt)
 -- nvimTree
 map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
 
+-- Vimspector
+vim.cmd([[
+nmap <F9> <cmd>call vimspector#Launch()<cr>
+nmap <F5> <cmd>call vimspector#StepOver()<cr>
+nmap <F8> <cmd>call vimspector#Reset()<cr>
+nmap <F11> <cmd>call vimspector#StepOver()<cr>")
+nmap <F12> <cmd>call vimspector#StepOut()<cr>")
+nmap <F10> <cmd>call vimspector#StepInto()<cr>")
+]])
+map('n', "Db", ":call vimspector#ToggleBreakpoint()<cr>", opt)
+map('n', "Dw", ":call vimspector#AddWatch()<cr>", opt)
+map('n', "De", ":call vimspector#Evaluate()<cr>", opt)

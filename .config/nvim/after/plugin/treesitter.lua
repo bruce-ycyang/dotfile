@@ -26,6 +26,12 @@ ts.setup {
         'typescript',
         'vim',
     },
+    rainbow = {
+        enable = true,
+        extended_mode = true,
+        max_file_lines = nil,
+    },
+    auto_install = true,
     -- ctrl + space select content of { }
     incremental_selection = {
         enable = true,
